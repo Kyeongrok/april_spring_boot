@@ -1,0 +1,16 @@
+spring:
+  main:
+    banner-mode: "off"
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: "jdbc:mysql://localhost:3306/sportsdb?zeroDateTimeBehavior=convertToNull&noAccessToProcedureBodies=true"
+    username: root
+    password: password
+  jpa:
+    database: mysql
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+

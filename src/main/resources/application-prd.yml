@@ -1,0 +1,20 @@
+---
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    password: password
+    url: "jdbc:mysql://localhost:3306/aprilskindb?zeroDateTimeBehavior=convertToNull"
+    username: root
+  jpa:
+    database: mysql
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+logging:
+  file: log/sports.log
+  level:
+    com.sports: DEBUG
+    jdbc.sqltiming: INFO
+    org.springframework.web: INFO

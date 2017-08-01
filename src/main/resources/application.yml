@@ -1,0 +1,14 @@
+--- 
+server:
+  port: 8092
+
+management:
+  security:
+    enabled: false
+
+spring: 
+  cache: 
+    caffeine: 
+      spec: "maximumSize=200,expireAfterAccess=10s"
+  main: 
+    banner-mode: "off"

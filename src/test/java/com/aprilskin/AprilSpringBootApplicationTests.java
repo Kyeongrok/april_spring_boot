@@ -1,4 +1,4 @@
-package april_spring_boot.april_spring_boot;
+package com.aprilskin;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
