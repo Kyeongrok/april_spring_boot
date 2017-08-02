@@ -18,7 +18,7 @@ public class ProductController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping(value = "/lineups", method = {RequestMethod.GET, RequestMethod.OPTIONS})
+    @RequestMapping(value = "/lineups/", method = {RequestMethod.GET, RequestMethod.OPTIONS})
     public ResponseEntity getLineups(@PathVariable int startDatetime) throws Exception {
         return new ResponseEntity<>(orderService.getProductList(), HttpStatus.OK);
     }
