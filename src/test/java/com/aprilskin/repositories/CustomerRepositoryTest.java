@@ -16,8 +16,8 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class CustomerRepositoryTest {
 
-    @Autowired
-    CustomerRepository customerRepository;
+//    @Autowired
+//    CustomerRepository customerRepository;
 
     @Test
     public void name2() throws Exception {
@@ -27,6 +27,8 @@ public class CustomerRepositoryTest {
         ObjectMapper mapper = new ObjectMapper();
         Customer customer = mapper.readValue(string, Customer.class);
         //assertEquals("20170726-0008173", customer.getResponse().getResult().get(0).getOrder_no());
+
+
 
     }
 /*
