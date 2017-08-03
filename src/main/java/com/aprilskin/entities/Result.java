@@ -1,5 +1,7 @@
 package com.aprilskin.entities;
 
+import java.util.List;
+
 public class Result {
     String shop_no;
     String shop_currency;
@@ -59,7 +61,7 @@ public class Result {
     String receiver_name_en_last;
     String desired_delivery_date;
 
-    Product[] product;
+    List<Product> product;
 
     public String getShop_no() {
         return shop_no;
@@ -517,11 +519,11 @@ public class Result {
         this.desired_delivery_date = desired_delivery_date;
     }
 
-    public Product[] getProduct() {
+    public List<Product> getProduct() {
         return product;
     }
 
-    public void setProduct(Product[] product) {
+    public void setProduct(List<Product> product) {
         this.product = product;
     }
 }

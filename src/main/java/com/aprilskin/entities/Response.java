@@ -1,9 +1,11 @@
 package com.aprilskin.entities;
 
+import java.util.List;
+
 public class Response {
 
     String total_record;
-    Result[] result;
+    List<Result> result;
 
     public String getTotal_record() {
         return total_record;
@@ -13,11 +15,11 @@ public class Response {
         this.total_record = total_record;
     }
 
-    public Result[] getResult() {
+    public List<Result> getResult() {
         return result;
     }
 
-    public void setResult(Result[] result) {
+    public void setResult(List<Result> result) {
         this.result = result;
     }
 }
