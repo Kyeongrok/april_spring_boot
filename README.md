@@ -38,7 +38,7 @@ ID : onesper
 PW :
 
 URL :
-https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=aprilskinkor&mall_id=onesper&data_type=json&auth_code=995ff59dd187520a69b3a89cc2e71e28
+https://datahub.cafe24.com/openapi/shop/orderItem/v1/search?service_type=aprilskinkor&mall_id=onesper&data_type=json&auth_code=995ff59dd187520a69b3a89cc2e71e28
 
 
 ### 재시작 방법

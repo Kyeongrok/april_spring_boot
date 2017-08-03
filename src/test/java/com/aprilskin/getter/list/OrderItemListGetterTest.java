@@ -1,6 +1,6 @@
 package com.aprilskin.getter.list;
 
-import com.aprilskin.entities.Order;
+import com.aprilskin.entities.OrderItem;
 import com.aprilskin.getter.FileStringGetter;
 import com.aprilskin.repositories.OrderRepository;
 import org.junit.Test;
@@ -12,12 +12,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("local")
-public class OrderListGetterTest {
+public class OrderItemListGetterTest {
     @Autowired
     private OrderRepository orderRepository;
 
@@ -26,9 +24,12 @@ public class OrderListGetterTest {
     @Test
     public void name() throws Exception {
         String string = new FileStringGetter().getString("./test_data/april_cafe24_api_result.json");
-        List<Order> orderList = orderListGetter.getOrderList(string);
+        List<OrderItem> orderItemList = orderListGetter.getOrderList(string);
 
-        orderRepository.save(orderList.get(0));
+        orderItemList.forEach((orderItem)->{
+            orderRepository.save(orderItem);
+        });
+
 
 //        System.out.println(string);
 

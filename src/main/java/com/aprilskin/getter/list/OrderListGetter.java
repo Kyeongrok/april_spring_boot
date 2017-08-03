@@ -1,6 +1,6 @@
 package com.aprilskin.getter.list;
 
-import com.aprilskin.entities.Order;
+import com.aprilskin.entities.OrderItem;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderListGetter {
-    public List<Order> getOrderList(String string){
-        List<Order> orderList = new ArrayList<>();
+    public List<OrderItem> getOrderList(String string){
+        List<OrderItem> orderItemList = new ArrayList<>();
 
         JsonNode jsonNode;
 
@@ -26,10 +26,10 @@ public class OrderListGetter {
         JsonNode results = jsonNode.get("response").get("result");
 
         results.forEach((result)->{
-
+            orderItemList.add(new OrderItem(result.get("order_no").asText()));
         });
 
-        return orderList;
+        return orderItemList;
     }
 
 }
