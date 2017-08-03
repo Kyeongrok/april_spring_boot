@@ -10,8 +10,62 @@ import java.util.List;
 /**
  * Created by kyeongrok on 2017-08-01.
  */
-@Entity
+//@Entity
 public class Product {
+    public Product() {
+    }
+
+    public Product(String order_item_no, String order_item_no_set, String order_item_no_sys, String order_item_no_sys_prev, String place_datetime, String cancelrequest_datetime, String exchangerequest_datetime, String returnrequest_datetime, String cancel_datetime, String cancelcomplete_datetime, String exchangecomplete_datetime, String returncomplete_datetime, String shipstart_datetime, String shipend_datetime, String shipper_code, String invoice_no, String ship_no, String product_name, String product_name_english, String item_name, String item_entry, String product_code, String product_no, String item_code, String supplier_code, String supplier_name, String order_item_qty, String product_sale_price, String item_price_add, String product_sale_price_discount, String order_status, String product_name_default, String item_name_default, String store_pickup_flag, String setproduct_flag, String setproduct_code, String product_material_english, String cloth_material, String category_no_international, String hope_shipping_company_name, String category_no_international_info, String product_weight, String hscode, String volume_size_serial, String product_material, String product_material_eng, String cloth_fabric, String origin_place) {
+        this.order_item_no = order_item_no;
+        this.order_item_no_set = order_item_no_set;
+        this.order_item_no_sys = order_item_no_sys;
+        this.order_item_no_sys_prev = order_item_no_sys_prev;
+        this.place_datetime = place_datetime;
+        this.cancelrequest_datetime = cancelrequest_datetime;
+        this.exchangerequest_datetime = exchangerequest_datetime;
+        this.returnrequest_datetime = returnrequest_datetime;
+        this.cancel_datetime = cancel_datetime;
+        this.cancelcomplete_datetime = cancelcomplete_datetime;
+        this.exchangecomplete_datetime = exchangecomplete_datetime;
+        this.returncomplete_datetime = returncomplete_datetime;
+        this.shipstart_datetime = shipstart_datetime;
+        this.shipend_datetime = shipend_datetime;
+        this.shipper_code = shipper_code;
+        this.invoice_no = invoice_no;
+        this.ship_no = ship_no;
+        this.product_name = product_name;
+        this.product_name_english = product_name_english;
+        this.item_name = item_name;
+        this.item_entry = item_entry;
+        this.product_code = product_code;
+        this.product_no = product_no;
+        this.item_code = item_code;
+        this.supplier_code = supplier_code;
+        this.supplier_name = supplier_name;
+        this.order_item_qty = order_item_qty;
+        this.product_sale_price = product_sale_price;
+        this.item_price_add = item_price_add;
+        this.product_sale_price_discount = product_sale_price_discount;
+        this.order_status = order_status;
+        this.product_name_default = product_name_default;
+        this.item_name_default = item_name_default;
+        this.store_pickup_flag = store_pickup_flag;
+        this.setproduct_flag = setproduct_flag;
+        this.setproduct_code = setproduct_code;
+        this.product_material_english = product_material_english;
+        this.cloth_material = cloth_material;
+        this.category_no_international = category_no_international;
+        this.hope_shipping_company_name = hope_shipping_company_name;
+        this.category_no_international_info = category_no_international_info;
+        this.product_weight = product_weight;
+        this.hscode = hscode;
+        this.volume_size_serial = volume_size_serial;
+        this.product_material = product_material;
+        this.product_material_eng = product_material_eng;
+        this.cloth_fabric = cloth_fabric;
+        this.origin_place = origin_place;
+    }
+
     String order_item_no;
     String order_item_no_set;
     String order_item_no_sys;

@@ -1,9 +1,21 @@
 package com.aprilskin.entities;
 
+import javax.persistence.Entity;
+
+//@Entity
 public class Meta {
 
     public Meta() {
     }
+
+    public Meta(int code, String message, String trace_id, String expiration_date, String auth_expiration_date) {
+        this.code = code;
+        this.message = message;
+        this.trace_id = trace_id;
+        this.expiration_date = expiration_date;
+        this.auth_expiration_date = auth_expiration_date;
+    }
+
     int code;
     String message;
     String trace_id;
