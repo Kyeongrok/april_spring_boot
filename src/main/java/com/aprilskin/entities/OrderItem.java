@@ -1,6 +1,5 @@
 package com.aprilskin.entities;
 
-import com.sun.istack.internal.Nullable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
