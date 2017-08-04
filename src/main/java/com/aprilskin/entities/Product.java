@@ -18,6 +18,15 @@ public class Product {
     @Id
     private long id;
     private String code;
+    private String itemCode;
+    private String ownItemCode;
+    private String name;
+    private long quentity;
+    private long originCost;
+    private long price;
+    private String description;
+
+
 
     public Product() {
     }

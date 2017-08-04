@@ -22,6 +22,9 @@ public class ProductRepositoryTest {
     public void save() throws Exception {
         Product product = new Product();
         product.setCode("P00000TV");
+        product.setOriginCost(2);
+
+
 
         productRepository.save(product);
     }
