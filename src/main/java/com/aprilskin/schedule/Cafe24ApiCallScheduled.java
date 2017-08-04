@@ -14,7 +14,7 @@ public class Cafe24ApiCallScheduled {
     //라이브 1초마다
     @Scheduled(fixedRate = 1000)
     public void livescore(){
-        log.info("hello");
+//        log.info("hello");
     }
 
 }

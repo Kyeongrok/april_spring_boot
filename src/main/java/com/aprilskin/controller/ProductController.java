@@ -11,15 +11,15 @@ import java.io.IOException;
 import java.text.ParseException;
 
 @RestController
-@RequestMapping({"/aprilskin/v1/order/list"})
+@RequestMapping({"/aprilskin/v1/order"})
 @CrossOrigin(origins = "*")
 public class ProductController {
 
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping(value = "/lineups/", method = {RequestMethod.GET, RequestMethod.OPTIONS})
-    public ResponseEntity getLineups(@PathVariable int startDatetime) throws Exception {
+    @RequestMapping(value = "/list/", method = {RequestMethod.GET, RequestMethod.OPTIONS})
+    public ResponseEntity getList(@PathVariable int startDatetime) throws Exception {
         return new ResponseEntity<>(orderService.getProductList(), HttpStatus.OK);
     }
 
