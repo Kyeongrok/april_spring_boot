@@ -24,8 +24,19 @@ public class ProductRepositoryTest {
         product.setCode("P00000TV");
         product.setOriginCost(2);
 
+        productRepository.save(product);
+    }
 
+    @Test
+    public void find() throws Exception {
+
+        Product product = new Product();
+        product.setCode("P00000TV");
+        product.setOriginCost(2);
 
         productRepository.save(product);
+
+        Product selectedProduct = productRepository.findOne(0l);
+        assertEquals("P00000TV", selectedProduct.getCode());
     }
 }

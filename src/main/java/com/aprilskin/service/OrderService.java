@@ -1,6 +1,8 @@
 package com.aprilskin.service;
 
 import com.aprilskin.entities.Product;
+import com.aprilskin.repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,11 +13,18 @@ import java.util.List;
  */
 @Service
 public class OrderService {
-    public List<Product> getProductList(){
-        List<Product> list = new ArrayList<>();
-        list.add(new Product());
-        return list;
 
+    @Autowired
+    private ProductRepository productRepository;
+
+
+    public List<Product> getProductList(){
+        List<Product> list = productRepository.findAll();
+        return list;
+    }
+
+    public void deleteItem(long id){
+        productRepository.delete(id);
     }
 
 }

@@ -24,6 +24,12 @@ public class ProductController {
         return new ResponseEntity<>(orderService.getProductList(), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.OPTIONS})
+    public ResponseEntity deleteItem(@RequestParam("id") long id) throws Exception {
+        orderService.deleteItem(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 //    @GetMapping
 //    public ResponseEntity getSchedules() throws IOException, ParseException {
 //        ResponseEntity<List<Game>> responseEntity = new ResponseEntity<>(baseballService.schedule(), HttpStatus.OK);
