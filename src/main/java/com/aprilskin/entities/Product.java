@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.MetaValue;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Data
 public class Product {
 
-    @Id
+    @Id @GeneratedValue
     private long id;
     private String code;
     private String itemCode;
