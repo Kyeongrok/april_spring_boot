@@ -15,11 +15,12 @@ import java.text.ParseException;
 @CrossOrigin(origins = "*")
 public class ProductController {
 
+
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping(value = "/list/", method = {RequestMethod.GET, RequestMethod.OPTIONS})
-    public ResponseEntity getList(@PathVariable int startDatetime) throws Exception {
+    @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.OPTIONS})
+    public ResponseEntity getList(@RequestParam("startDatetime") String startDatetime) throws Exception {
         return new ResponseEntity<>(orderService.getProductList(), HttpStatus.OK);
     }
 

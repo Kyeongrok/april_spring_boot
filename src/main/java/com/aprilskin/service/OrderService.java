@@ -13,7 +13,7 @@ import java.util.List;
 public class OrderService {
     public List<Product> getProductList(){
         List<Product> list = new ArrayList<>();
-
+        list.add(new Product());
         return list;
 
     }
