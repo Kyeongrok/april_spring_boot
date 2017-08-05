@@ -6,6 +6,8 @@ import com.aprilskin.repositories.ProductRepository;
 import com.aprilskin.service.ProductService;
 import com.aprilskin.utils.CustomErrorType;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpHeaders;
+import org.apache.http.client.methods.HttpHead;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +32,22 @@ public class ProductController {
     // >>>>>>>>>>>>>>>>>>>>>>   Create a Product  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     @RequestMapping(value= "/insert", method = RequestMethod.POST)
-    public ResponseEntity<?> createProduct(@RequestBody Product product, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<?> createProduct(@RequestParam("id") long id,@RequestParam("code") String code,
+                                           @RequestParam("name") String name,@RequestParam("itemCode") String itemCode,
+                                           @RequestParam("ownItemCode") String ownItemCode,@RequestParam("price") long price,
+                                           @RequestParam("originCost") long originCost,@RequestParam("quentity") long quentity,
+                                           @RequestParam("description") String description) {
+        Product product = new Product(id, code, itemCode, ownItemCode, name, quentity, originCost, price, description);
         log.info("Creating Product : {}", product);
         if (productService.isProductExist(product)) {
             log.error("Unable to create. A Product name {} already exist", product.getName());
             return new ResponseEntity(new CustomErrorType("unable to create. A Product with name " +
                     product.getName() + " already exist."), HttpStatus.CONFLICT);
         }
+        productService.saveProduct(product);
+
+        //HttpHeaders headers = new HttpHeaders();
+
 
         return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
