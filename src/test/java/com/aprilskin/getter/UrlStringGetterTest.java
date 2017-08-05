@@ -1,18 +1,7 @@
 package com.aprilskin.getter;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-import com.aprilskin.entities.Customer;
-import com.aprilskin.entities.Product;
-import com.aprilskin.service.OrderService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jdk.nashorn.internal.parser.JSONParser;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 
 public class UrlStringGetterTest {

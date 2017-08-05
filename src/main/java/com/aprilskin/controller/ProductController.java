@@ -3,7 +3,6 @@ package com.aprilskin.controller;
 
 import com.aprilskin.entities.Product;
 import com.aprilskin.repositories.ProductRepository;
-import com.aprilskin.service.OrderService;
 import com.aprilskin.service.ProductService;
 import com.aprilskin.utils.CustomErrorType;
 import lombok.extern.slf4j.Slf4j;
@@ -11,9 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+import sun.misc.Request;
 
-import java.io.IOException;
-import java.text.ParseException;
+import java.util.List;
 
 @RestController
 @RequestMapping({"/aprilskin/v1/product"})
@@ -27,22 +27,52 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
-    @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.OPTIONS})
-    public ResponseEntity getList(@RequestParam("startDatetime") String startDatetime) throws Exception {
-        return new ResponseEntity<>(productService.getProductList(), HttpStatus.OK);
+    // >>>>>>>>>>>>>>>>>>>>>>   Create a Product  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    @RequestMapping(value= "/insert", method = RequestMethod.POST)
+    public ResponseEntity<?> createProduct(@RequestBody Product product, UriComponentsBuilder ucBuilder) {
+        log.info("Creating Product : {}", product);
+        if (productService.isProductExist(product)) {
+            log.error("Unable to create. A Product name {} already exist", product.getName());
+            return new ResponseEntity(new CustomErrorType("unable to create. A Product with name " +
+                    product.getName() + " already exist."), HttpStatus.CONFLICT);
+        }
+
+        return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.OPTIONS})
-    public ResponseEntity deleteItem(@RequestParam("id") long id) throws Exception {
-        productService.deleteItem(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    // >>>>>>>>>>>>>>>>>>>>>> Retrieve all Products  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ResponseEntity getListAll(@RequestParam("startDatetime") String startDatetime) throws Exception {
+        List<Product> products = productService.findAllProducts();
+        if (products.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
+
+
+    // >>>>>>>>>>>>>>>>>>>>> Retrieve one Product <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    @RequestMapping(value ="/list/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getProduct(@PathVariable("id") long id) {
+        Product product = productService.findById(id);
+        if(product == null) {
+            log.error("Product with id {} not found.", id);
+            return new ResponseEntity(new CustomErrorType("Product with id" + product
+            + "not found"), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Product>(product, HttpStatus.OK);
+    }
+
+    // >>>>>>>>>>>>>>>>>>>>>> Update a Product   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> updateUser(@PathVariable("id") long id, @RequestBody Product product) {
         log.info("Updating User with id {}", id);
 
-        Product currentProduct = productRepository.findOne(id);
+        Product currentProduct = productService.findById(id);
 
         if (currentProduct == null) {
             log.error("Unable to update. User with id {} not found.", id);
@@ -50,10 +80,44 @@ public class ProductController {
                     HttpStatus.NOT_FOUND);
         }
 
+        currentProduct.setId(product.getId());
+        currentProduct.setItemCode(product.getItemCode());
         currentProduct.setName(product.getName());
+        currentProduct.setCode(product.getCode());
+        currentProduct.setOwnItemCode(product.getOwnItemCode());
+        currentProduct.setQuentity(product.getQuentity());
+        currentProduct.setPrice(product.getPrice());
+        currentProduct.setDescription(product.getDescription());
+        currentProduct.setOriginCost(product.getOriginCost());
 
-        productRepository.save(currentProduct);
+        productService.updateProduct(currentProduct);
         return new ResponseEntity<Product>(currentProduct, HttpStatus.OK);
+    }
+
+    // >>>>>>>>>>>>>>>>>>>>>>> Delete a Product <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteProduct(@PathVariable("id") long id) throws Exception {
+        log.info("Fetching & Deleting Product with id {}", id);
+
+        Product product = productService.findById(id);
+        if( product == null) {
+            log.error("Unable to delete. Product with id {} not found.", id);
+            return new ResponseEntity(new CustomErrorType("Unable to delete. Product with" + id +
+                    "not found."), HttpStatus.NOT_FOUND);
+        }
+        productService.deleteProductById(id);
+        return new ResponseEntity<Product> (HttpStatus.NO_CONTENT);
+    }
+
+    // >>>>>>>>>>>>>>>>>>>>>> Delete all Products <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    public ResponseEntity<Product> deleteALLProducts() {
+        log.info("Deleting All Products");
+
+        productService.deleteAllProducts();
+        return new ResponseEntity<Product>(HttpStatus.NO_CONTENT);
     }
 
 //    @GetMapping
