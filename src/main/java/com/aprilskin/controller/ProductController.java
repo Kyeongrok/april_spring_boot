@@ -44,7 +44,7 @@ public class ProductController {
     // >>>>>>>>>>>>>>>>>>>>>> Retrieve all Products  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResponseEntity getListAll(String startDatetime) throws Exception {
+    public ResponseEntity getListAll() throws Exception {
         List<Product> products = productService.findAllProducts();
         if (products.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -52,7 +52,7 @@ public class ProductController {
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
 
-
+/*
     // >>>>>>>>>>>>>>>>>>>>> Retrieve one Product <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     @RequestMapping(value ="/list/{id}", method = RequestMethod.GET)
@@ -65,11 +65,17 @@ public class ProductController {
         }
         return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
-
+*/
     // >>>>>>>>>>>>>>>>>>>>>> Update a Product   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateUser(@PathVariable("id") long id, @RequestBody Product product) {
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateUser(@RequestParam("id") long id,@RequestParam("code") String code,
+                                        @RequestParam("name") String name,@RequestParam("itemCode") String itemCode,
+                                        @RequestParam("ownItemCode") String ownItemCode,@RequestParam("price") long price,
+                                        @RequestParam("originCost") long originCost,@RequestParam("quentity") long quentity,
+                                        @RequestParam("description") String description) {
+
+        Product product = new Product(id, code, itemCode, ownItemCode, name, quentity, originCost, price, description);
         log.info("Updating User with id {}", id);
 
         Product currentProduct = productService.findById(id);
@@ -96,8 +102,8 @@ public class ProductController {
 
     // >>>>>>>>>>>>>>>>>>>>>>> Delete a Product <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteProduct(@PathVariable("id") long id) throws Exception {
+    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteProduct(@RequestParam("id") long id) throws Exception {
         log.info("Fetching & Deleting Product with id {}", id);
 
         Product product = productService.findById(id);
@@ -109,7 +115,7 @@ public class ProductController {
         productService.deleteProductById(id);
         return new ResponseEntity<Product> (HttpStatus.NO_CONTENT);
     }
-
+/*
     // >>>>>>>>>>>>>>>>>>>>>> Delete all Products <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
@@ -119,7 +125,7 @@ public class ProductController {
         productService.deleteAllProducts();
         return new ResponseEntity<Product>(HttpStatus.NO_CONTENT);
     }
-
+*/
 //    @GetMapping
 //    public ResponseEntity getSchedules() throws IOException, ParseException {
 //        ResponseEntity<List<Game>> responseEntity = new ResponseEntity<>(baseballService.schedule(), HttpStatus.OK);

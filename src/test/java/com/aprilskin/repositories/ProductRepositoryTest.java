@@ -22,32 +22,33 @@ public class ProductRepositoryTest {
     @Autowired
     ProductServiceImpl productService;
 
-    /*@Test
+    @Test
     public void save() throws Exception {
         Product product = new Product();
-        product.setCode("P00000TD");
+        product.setCode("P00000TF");
         product.setOriginCost(4);
-        product.setDescription("test");
+        product.setDescription("test4");
         product.setItemCode("D");
-        product.setName("YJW");
+        product.setName("Yjw");
         product.setOriginCost(4);
         product.setOwnItemCode("C1234");
         product.setPrice(1);
         product.setQuentity(1);
 
-        //productRepository.save(product);
-        productService.findById
+        productService.saveProduct(product);
 
-    }*/
 
+
+    }
+/*
     @Test
     public void findById() throws Exception {
-        Product product = productService.findById(6l);
-        product.setQuentity(2);
-        assertEquals("P00000TA",product.getCode());
-        productService.updateProduct(product);
+        //Product product = productService.findById(6l);
+        //product.setQuentity(2);
+        //assertEquals("P00000TA",product.getCode());
+        //productService.updateProduct(product);
         //assertEquals("P00000TD",);
     }
-
+*/
 
 }

@@ -13,22 +13,51 @@ import java.util.List;
  */
 @Entity
 @Data
+@Table(name="product")
 public class Product {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "code")
     private String code;
+
+    @Column(name = "item_code")
     private String itemCode;
+
+    @Column(name = "own_item_code")
     private String ownItemCode;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "quentity")
     private long quentity;
+
+    @Column(name = "origin_cost")
     private long originCost;
+
+    @Column(name = "price")
     private long price;
+
+    @Column(name = "description")
     private String description;
 
     public Product() {
     }
-/*
+
+    public Product(long id, String code, String itemCode, String ownItemCode, String name, long quentity, long originCost, long price, String description) {
+        this.id = id;
+        this.code = code;
+        this.itemCode = itemCode;
+        this.ownItemCode = ownItemCode;
+        this.name = name;
+        this.quentity = quentity;
+        this.originCost = originCost;
+        this.price = price;
+        this.description = description;
+    }
+    /*
     public long getId() {
         return id;
     }
