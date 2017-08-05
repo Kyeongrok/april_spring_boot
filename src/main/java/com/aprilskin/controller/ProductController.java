@@ -44,7 +44,7 @@ public class ProductController {
     // >>>>>>>>>>>>>>>>>>>>>> Retrieve all Products  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResponseEntity getListAll(@RequestParam("startDatetime") String startDatetime) throws Exception {
+    public ResponseEntity getListAll(String startDatetime) throws Exception {
         List<Product> products = productService.findAllProducts();
         if (products.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);

@@ -6,10 +6,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.*;
 
+@ActiveProfiles("local")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProductRepositoryTest {
@@ -20,24 +22,31 @@ public class ProductRepositoryTest {
     @Autowired
     ProductServiceImpl productService;
 
-    @Test
+    /*@Test
     public void save() throws Exception {
         Product product = new Product();
-        product.setCode("P00000TA");
+        product.setCode("P00000TD");
         product.setOriginCost(4);
-        product.setDescription("test3");
-        product.setItemCode("C");
-        product.setName("yJw");
+        product.setDescription("test");
+        product.setItemCode("D");
+        product.setName("YJW");
         product.setOriginCost(4);
         product.setOwnItemCode("C1234");
         product.setPrice(1);
         product.setQuentity(1);
 
-        productRepository.save(product);
-        //productService.saveProduct(product);
+        //productRepository.save(product);
+        productService.findById
 
+    }*/
 
-
+    @Test
+    public void findById() throws Exception {
+        Product product = productService.findById(6l);
+        product.setQuentity(2);
+        assertEquals("P00000TA",product.getCode());
+        productService.updateProduct(product);
+        //assertEquals("P00000TD",);
     }
 
 
