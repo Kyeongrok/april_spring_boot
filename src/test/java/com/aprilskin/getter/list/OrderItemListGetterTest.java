@@ -27,8 +27,10 @@ public class OrderItemListGetterTest {
         List<OrderItem> orderItemList = orderListGetter.getOrderList(string);
 
         orderItemList.forEach((orderItem)->{
-            orderRepository.save(orderItem);
+
         });
+
+        orderRepository.save(orderItemList.get(0));
 
 
     }
