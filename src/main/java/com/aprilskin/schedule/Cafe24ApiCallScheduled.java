@@ -28,8 +28,8 @@ public class Cafe24ApiCallScheduled {
 
     private OrderListGetter orderListGetter = new OrderListGetter();
 
-    //라이브 1초마다
-    @Scheduled(fixedRate = 5000)
+    //라이브 5분마다
+    @Scheduled(fixedRate = 300000)
     public void livescore(){
         String string = new FileStringGetter().getString("./test_data/april_cafe24_api_result.json");
         List<OrderItem> orderItemList = orderListGetter.getOrderList(string);

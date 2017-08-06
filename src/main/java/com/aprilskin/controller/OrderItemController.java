@@ -41,4 +41,15 @@ public class OrderItemController {
         return new ResponseEntity<List<OrderItem>>(orderItems, HttpStatus.OK);
     }
 
+    @RequestMapping(value= "/list/time", method = RequestMethod.GET)
+    public ResponseEntity getListAllByTime(@RequestParam("startDateTime") String startDateTime,
+                                            @RequestParam("endDateTime") String endDateTime) throws Exception {
+        List<OrderItem> orderItems = orderItemService.findAllOrderItems();
+        if (orderItems.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<OrderItem>>(orderItems, HttpStatus.OK);
+
+    }
+
 }
