@@ -31,7 +31,5 @@ public class OrderItemListGetterTest {
         });
 
 
-//        System.out.println(string);
-
     }
 }

@@ -1,15 +1,16 @@
 package com.aprilskin.entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
+
+import javax.persistence.*;
 
 /**
  * Created by kyeongrok on 2017-08-01.
  */
 @Entity
+@Data
+@Table(name="order")
 public class OrderItem {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
