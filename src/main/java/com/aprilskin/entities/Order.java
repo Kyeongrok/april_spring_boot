@@ -2,7 +2,11 @@ package com.aprilskin.entities;
 
 
 import com.aprilskin.utils.LocalDateTimeAttributeConverter;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -29,7 +33,9 @@ public class Order {
     private long orderItemQty;
     private String itemCode;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
     private List<OrderProduct> orderProducts;
 
 
