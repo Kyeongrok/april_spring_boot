@@ -29,7 +29,7 @@ public class OrderItemController {
     @RequestMapping(value= "/list", method = RequestMethod.GET)
     public ResponseEntity getListAllByTime(@RequestParam("startDateTime") String startDateTime,
                                            @RequestParam("endDateTime") String endDateTime) throws Exception {
-        List<Order> orders = orderItemService.findAllOrderItems();
+        List<Order> orders = orderRepository.findAll();
 
         if (orders.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
