@@ -25,17 +25,23 @@ public class ProductRepositoryTest {
     @Test
     public void save() throws Exception {
         Product product = new Product();
-        product.setCode("P00000TF");
-        product.setOriginCost(4);
-        product.setDescription("test4");
+        product.setCode("P00000TH");
         product.setItemCode("D");
         product.setName("Yjw");
-        product.setOriginCost(4);
         product.setOwnItemCode("C1234");
-        product.setPrice(1);
-        product.setQuentity(1);
-
+        product.setProductCode("ABCD");
+        product.setOrderItemQty(5);
         productService.saveProduct(product);
+
+        Product productSecond = new Product();
+        productSecond.setCode("P00000TI");
+        productSecond.setItemCode("E");
+        productSecond.setName("YJW");
+        productSecond.setOwnItemCode("C1234");
+        productSecond.setProductCode("ABCDEFG");
+        productSecond.setOrderItemQty(6);
+
+        productService.saveProduct(productSecond);
 
 
 

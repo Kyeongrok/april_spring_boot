@@ -31,33 +31,27 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "quentity")
-    private long quentity;
+    @Column(name = "order_item_qty")
+    private long orderItemQty;
 
-    @Column(name = "origin_cost")
-    private long originCost;
+    @Column(name = "product_code")
+    private String productCode;
 
-    @Column(name = "price")
-    private long price;
 
-    @Column(name = "description")
-    private String description;
 
     public Product() {
     }
 
-    public Product(long id, String code, String itemCode, String ownItemCode, String name, long quentity, long originCost, long price, String description) {
+    public Product(long id, String code, String itemCode, String ownItemCode, String name, long orderItemQty, String productCode) {
         this.id = id;
         this.code = code;
         this.itemCode = itemCode;
         this.ownItemCode = ownItemCode;
         this.name = name;
-        this.quentity = quentity;
-        this.originCost = originCost;
-        this.price = price;
-        this.description = description;
+        this.orderItemQty = orderItemQty;
+        this.productCode = productCode;
     }
-    /*
+
     public long getId() {
         return id;
     }
@@ -98,36 +92,19 @@ public class Product {
         this.name = name;
     }
 
-    public long getQuentity() {
-        return quentity;
+    public long getOrderItemQty() {
+        return orderItemQty;
     }
 
-    public void setQuentity(long quentity) {
-        this.quentity = quentity;
+    public void setOrderItemQty(long orderItemQty) {
+        this.orderItemQty = orderItemQty;
     }
 
-    public long getOriginCost() {
-        return originCost;
+    public String getProductCode() {
+        return productCode;
     }
 
-    public void setOriginCost(long originCost) {
-        this.originCost = originCost;
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
     }
-
-    public long getPrice() {
-        return price;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    */
 }
