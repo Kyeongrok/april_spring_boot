@@ -2,24 +2,14 @@ package com.aprilskin.controller;
 
 
 import com.aprilskin.entities.OrderItem;
-import com.aprilskin.entities.Product;
-import com.aprilskin.entities.TimeOrderItem;
-import com.aprilskin.repositories.OrderRepository;
-import com.aprilskin.repositories.ProductRepository;
-import com.aprilskin.schedule.Cafe24ApiCallScheduled;
+import com.aprilskin.repositories.OrderItemRepository;
 import com.aprilskin.service.OrderItemService;
-import com.aprilskin.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
-import sun.misc.Request;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -32,7 +22,7 @@ public class OrderItemController {
     private OrderItemService orderItemService;
 
     @Autowired
-    private OrderRepository orderRepository;
+    private OrderItemRepository orderItemRepository;
 
     // >>>>>>>>>>>>>>>>>>>>>> Retrieve all OrderItems  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

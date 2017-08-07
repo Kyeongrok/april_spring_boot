@@ -1,9 +1,7 @@
 package com.aprilskin.service;
 
 import com.aprilskin.entities.OrderItem;
-import com.aprilskin.entities.Product;
-import com.aprilskin.repositories.OrderRepository;
-import com.aprilskin.repositories.ProductRepository;
+import com.aprilskin.repositories.OrderItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +13,14 @@ import java.util.List;
 public class OrderItemImpl implements OrderItemService{
 
     @Autowired
-    private OrderRepository orderRepository;
+    private OrderItemRepository orderItemRepository;
 
     public void saveOrderItem(OrderItem orderitem) {
-        orderRepository.save(orderitem);
+        orderItemRepository.save(orderitem);
     }
 
     public List<OrderItem> findAllOrderItems(){
-        return orderRepository.findAll();
+        return orderItemRepository.findAll();
     }
 
 

@@ -2,7 +2,7 @@ package com.aprilskin.getter.list;
 
 import com.aprilskin.entities.OrderItem;
 import com.aprilskin.getter.FileStringGetter;
-import com.aprilskin.repositories.OrderRepository;
+import com.aprilskin.repositories.OrderItemRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.List;
 @ActiveProfiles("local")
 public class OrderItemListGetterTest {
     @Autowired
-    private OrderRepository orderRepository;
+    private OrderItemRepository orderItemRepository;
 
     private OrderListGetter orderListGetter = new OrderListGetter();
 
@@ -27,10 +27,10 @@ public class OrderItemListGetterTest {
         List<OrderItem> orderItemList = orderListGetter.getOrderList(string);
 
         orderItemList.forEach((orderItem)->{
-            orderRepository.save(orderItem);
+            orderItemRepository.save(orderItem);
         });
 
-        //orderRepository.save(orderItemList.get(0));
+        //orderItemRepository.save(orderItemList.get(0));
 
 
     }
