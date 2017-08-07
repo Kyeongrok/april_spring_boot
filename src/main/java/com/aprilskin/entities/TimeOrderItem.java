@@ -14,11 +14,11 @@ public class TimeOrderItem {
 /*
    private String startDateTime;
    private String endDateTime;
-   private List<OrderItem> orderItemList = new ArrayList<>();
+   private List<Order> orderList = new ArrayList<>();
 
-    public TimeOrderItem(String startDateTime, String endDateTime, List<OrderItem> orderItemList) {
+    public TimeOrderItem(String startDateTime, String endDateTime, List<Order> orderList) {
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
-        this.orderItemList = orderItemList;
+        this.orderList = orderList;
     }*/
 }

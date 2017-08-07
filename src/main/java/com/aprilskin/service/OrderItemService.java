@@ -1,16 +1,15 @@
 package com.aprilskin.service;
 
-import com.aprilskin.entities.OrderItem;
-import com.aprilskin.entities.Product;
+import com.aprilskin.entities.Order;
 
 import java.util.List;
 
 public interface OrderItemService {
 
 
-    void saveOrderItem(OrderItem orderItem);
+    void saveOrderItem(Order order);
 
-    List<OrderItem> findAllOrderItems();
+    List<Order> findAllOrderItems();
 
 
 }

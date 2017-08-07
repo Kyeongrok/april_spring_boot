@@ -1,6 +1,6 @@
 package com.aprilskin.dto;
 
-import com.aprilskin.entities.OrderItem;
+import com.aprilskin.entities.Order;
 import lombok.Data;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class OrderDto {
 
     String startDatetime;
     String endDatetime;
-    List<OrderItem> orderItemList;
+    List<Order> orderList;
 
 
 
