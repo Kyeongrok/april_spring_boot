@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class Cafe24ApiCallScheduled {
     public void livescore(){
 
         LocalDateTime localDateTime = LocalDateTime.now();
-
+        new SimpleDateFormat();
         String startDatetime = "2017-08-06+11:00:00";
         String endDatetime = "2017-08-07+23:00:00";
 

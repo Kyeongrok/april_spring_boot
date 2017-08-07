@@ -1,9 +1,12 @@
 package com.aprilskin.entities;
 
 
+import com.aprilskin.utils.LocalDateTimeAttributeConverter;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created by kyeongrok on 2017-08-01.
@@ -25,6 +28,10 @@ public class OrderItem {
     private String productCode;
     private long orderItemQty;
     private String itemCode;
+
+
+    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    private LocalDateTime orderDatetime;
 
 
 
