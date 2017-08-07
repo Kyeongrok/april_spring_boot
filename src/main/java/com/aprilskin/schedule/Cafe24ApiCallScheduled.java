@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,10 +37,12 @@ public class Cafe24ApiCallScheduled {
     @Scheduled(fixedRate = 1000 * 60 * 5)
     public void livescore(){
 
-        LocalDateTime localDateTime = LocalDateTime.now();
-        new SimpleDateFormat();
-        String startDatetime = "2017-08-06+11:00:00";
-        String endDatetime = "2017-08-07+23:00:00";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd+HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.now();
+        String startDatetime = dateTime.minusMinutes(5).format(formatter);
+        String endDatetime = dateTime.format(formatter);
+
+
 
         String string = new UrlStringGetter().getString("https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=aprilskinkor&mall_id=onesper&start_datetime="+startDatetime+"&end_datetime="+endDatetime+"&limit=2000&data_type=json&auth_code=995ff59dd187520a69b3a89cc2e71e28");
         List<Order> orderList = orderListGetter.getOrderList(string);

@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping({"/aprilskin/v1/order"})
 @CrossOrigin(origins = "*")
 @Slf4j
-public class OrderItemController {
+public class OrderController {
 
     @Autowired
     private OrderItemService orderItemService;
