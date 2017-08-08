@@ -25,7 +25,7 @@ public class ProductRepositoryTest {
     @Test
     public void save() throws Exception {
         Product product = new Product();
-        product.setCode("P00000TH");
+        product.setCode("P00000TB");
         product.setItemCode("D");
         product.setName("Yjw");
         product.setOwnItemCode("C1234");
@@ -34,7 +34,7 @@ public class ProductRepositoryTest {
         productService.saveProduct(product);
 
         Product productSecond = new Product();
-        productSecond.setCode("P00000TI");
+        productSecond.setCode("P00000TK");
         productSecond.setItemCode("E");
         productSecond.setName("YJW");
         productSecond.setOwnItemCode("C1234");

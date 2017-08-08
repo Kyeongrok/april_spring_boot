@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service("OrderItemService")
@@ -23,6 +24,9 @@ public class OrderItemImpl implements OrderItemService{
         return orderRepository.findAll();
     }
 
+    public List<Order> findByOrderDatetimeBetween(LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        return orderRepository.findByOrderDatetimeBetween(startDateTime, endDateTime);
+    }
 
 
 }

@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -29,15 +31,25 @@ public class OrderController {
     @RequestMapping(value= "/list", method = RequestMethod.GET)
     public ResponseEntity getListAllByTime(@RequestParam("startDateTime") String startDateTime,
                                            @RequestParam("endDateTime") String endDateTime) throws Exception {
-        List<Order> orders = orderRepository.findAll();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd+HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.parse(startDateTime, formatter);
+        LocalDateTime dateTime2 = LocalDateTime.parse(endDateTime, formatter);
+
+
+        List<Order> orders = orderRepository.findByOrderDatetimeBetween(dateTime, dateTime2);
 
         if (orders.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
 
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd+HH:mm:ss");
+        String startDatetime2 = dateTime.format(formatter2);
+        String endDatetime2 = dateTime2.format(formatter2);
+
         OrderDto orderDto = new OrderDto();
-        orderDto.setStartDatetime(startDateTime);
-        orderDto.setEndDatetime(endDateTime);
+        orderDto.setStartDatetime(startDatetime2);
+        orderDto.setEndDatetime(endDatetime2);
         orderDto.setOrderList(orders);
 
 

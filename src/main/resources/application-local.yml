@@ -10,7 +10,7 @@ spring:
     database: mysql
     generate-ddl: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     show-sql: true
 
 
