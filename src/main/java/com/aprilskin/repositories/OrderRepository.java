@@ -1,6 +1,7 @@
 package com.aprilskin.repositories;
 
 import com.aprilskin.entities.Order;
+import com.aprilskin.entities.OrderProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -3,8 +3,10 @@ package com.aprilskin.controller;
 
 import com.aprilskin.dto.OrderDto;
 import com.aprilskin.entities.Order;
+import com.aprilskin.entities.OrderProduct;
+import com.aprilskin.entities.Product;
 import com.aprilskin.repositories.OrderRepository;
-import com.aprilskin.service.OrderItemService;
+import com.aprilskin.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +24,7 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private OrderItemService orderItemService;
+    private OrderService orderService;
 
     @Autowired
     private OrderRepository orderRepository;
@@ -32,7 +34,7 @@ public class OrderController {
     public ResponseEntity getListAllByTime(@RequestParam("startDateTime") String startDateTime,
                                            @RequestParam("endDateTime") String endDateTime) throws Exception {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd+HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.parse(startDateTime, formatter);
         LocalDateTime dateTime2 = LocalDateTime.parse(endDateTime, formatter);
 
@@ -43,7 +45,7 @@ public class OrderController {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
 
-        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd+HH:mm:ss");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String startDatetime2 = dateTime.format(formatter2);
         String endDatetime2 = dateTime2.format(formatter2);
 
@@ -55,6 +57,15 @@ public class OrderController {
 
         return new ResponseEntity<OrderDto>(orderDto, HttpStatus.OK);
 
+    }
+
+    @RequestMapping(value = "/list/all", method = RequestMethod.GET)
+    public ResponseEntity getListAll() throws Exception {
+        List<Order> orders = orderService.findAllOrder();
+        if (orders.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
     }
 
 }

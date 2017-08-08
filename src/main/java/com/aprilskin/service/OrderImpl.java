@@ -9,24 +9,26 @@ import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Service("OrderItemService")
+@Service("OrderService")
 @Transactional
-public class OrderItemImpl implements OrderItemService{
+public class OrderImpl implements OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
 
-    public void saveOrderItem(Order orderitem) {
-        orderRepository.save(orderitem);
+    public void saveOrder(Order order) {
+        orderRepository.save(order);
     }
 
-    public List<Order> findAllOrderItems(){
+    public List<Order> findAllOrder(){
         return orderRepository.findAll();
     }
 
     public List<Order> findByOrderDatetimeBetween(LocalDateTime startDateTime, LocalDateTime endDateTime) {
         return orderRepository.findByOrderDatetimeBetween(startDateTime, endDateTime);
     }
+
+
 
 
 }

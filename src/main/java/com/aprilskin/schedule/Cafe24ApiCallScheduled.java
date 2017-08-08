@@ -4,16 +4,14 @@ import com.aprilskin.entities.Order;
 import com.aprilskin.getter.UrlStringGetter;
 import com.aprilskin.getter.list.OrderListGetter;
 import com.aprilskin.repositories.OrderRepository;
-import com.aprilskin.service.OrderItemService;
+import com.aprilskin.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,7 +27,7 @@ public class Cafe24ApiCallScheduled {
 
 
     @Autowired
-    private OrderItemService orderItemService;
+    private OrderService orderService;
 
     private OrderListGetter orderListGetter = new OrderListGetter();
 
