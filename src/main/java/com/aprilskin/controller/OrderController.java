@@ -2,6 +2,7 @@ package com.aprilskin.controller;
 
 
 import com.aprilskin.dto.OrderDto;
+import com.aprilskin.dto.OrderProductDto;
 import com.aprilskin.entities.Order;
 import com.aprilskin.entities.OrderProduct;
 import com.aprilskin.entities.Product;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -41,6 +43,7 @@ public class OrderController {
 
         List<Order> orders = orderRepository.findByOrderDatetimeBetween(dateTime, dateTime2);
 
+
         if (orders.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
@@ -49,10 +52,18 @@ public class OrderController {
         String startDatetime2 = dateTime.format(formatter2);
         String endDatetime2 = dateTime2.format(formatter2);
 
+        List<OrderProductDto> orderProductDtos = new ArrayList<>();
+        orders.forEach(order -> {
+            OrderProductDto orderProductDto = new OrderProductDto();
+            orderProductDto.setNo(order.getNo());
+        });
+
+
         OrderDto orderDto = new OrderDto();
         orderDto.setStartDatetime(startDatetime2);
         orderDto.setEndDatetime(endDatetime2);
         orderDto.setOrderList(orders);
+        orderDto.setOrderProductDtoList(orderProductDtos);
 
 
         return new ResponseEntity<OrderDto>(orderDto, HttpStatus.OK);
