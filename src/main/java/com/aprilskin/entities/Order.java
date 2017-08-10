@@ -29,6 +29,7 @@ public class Order {
     private String shipAddress;
     private String shipMobile;
     private String shipMessage;
+
     private String productCode;
     private long orderItemQty;
     private String itemCode;

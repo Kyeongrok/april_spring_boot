@@ -26,9 +26,11 @@ public class OrderProduct {
     private Order order;
 
     //private long orderItemId;
-    private String productCode;
-    private int quentity;
     private String itemCode;
+    private String OwnItemCode;
+    private String productName;
+    private long orderItemQty;
+    private String productCode;
 
 
 }

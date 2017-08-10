@@ -8,7 +8,7 @@ public interface ProductService {
 
     Product findById(Long id);
 
-    Product findByName(String name);
+    Product findByProductName(String productName);
 
     void saveProduct(Product product);
 

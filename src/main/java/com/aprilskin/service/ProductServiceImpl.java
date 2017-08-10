@@ -20,8 +20,8 @@ public class ProductServiceImpl implements ProductService{
         return productRepository.findOne(id);
     }
 
-    public Product findByName(String name) {
-        return productRepository.findByName(name);
+    public Product findByProductName(String productName) {
+        return productRepository.findByProductName(productName);
     }
 
     public void saveProduct(Product product) {

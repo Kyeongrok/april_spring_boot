@@ -57,11 +57,15 @@ public class OrderListGetter {
                 OrderProduct orderProduct = new OrderProduct();
                 orderProduct.setOrder(order);
                 orderProduct.setProductCode(product.get("product_code").asText());
-                orderProduct.setQuentity(product.get("order_item_qty").asInt());
+                orderProduct.setOrderItemQty(product.get("order_item_qty").asLong());
                 orderProduct.setItemCode(product.get("item_code").asText());
+                orderProduct.setProductName(product.get("product_name").asText());
+
+
                 order.setProductCode(product.get("product_code").asText());
-                order.setOrderItemQty(product.get("order_item_qty").asInt());
+                order.setOrderItemQty(product.get("order_item_qty").asLong());
                 order.setItemCode(product.get("item_code").asText());
+
                 orderProductList.add(orderProduct);
             }
 

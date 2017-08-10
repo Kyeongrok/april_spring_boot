@@ -32,16 +32,16 @@ public class ProductController {
     // >>>>>>>>>>>>>>>>>>>>>>   Create a Product  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     @RequestMapping(value= "/insert", method = RequestMethod.POST)
-    public ResponseEntity<?> createProduct(@RequestParam("id") long id,@RequestParam("code") String code,
-                                           @RequestParam("name") String name,@RequestParam("itemCode") String itemCode,
+    public ResponseEntity<?> createProduct(@RequestParam("id") long id,
+                                           @RequestParam("productName") String productName,@RequestParam("itemCode") String itemCode,
                                            @RequestParam("ownItemCode") String ownItemCode,@RequestParam("orderItemQty") long orderItemQty,
                                            @RequestParam("productCode") String productCode) {
-        Product product = new Product(id, code, itemCode, ownItemCode, name, orderItemQty, productCode);
+        Product product = new Product(id, itemCode, ownItemCode, productName, orderItemQty, productCode);
         log.info("Creating Product : {}", product);
         if (productService.isProductExist(product)) {
-            log.error("Unable to create. A Product name {} already exist", product.getName());
+            log.error("Unable to create. A Product name {} already exist", product.getProductName());
             return new ResponseEntity(new CustomErrorType("unable to create. A Product with name " +
-                    product.getName() + " already exist."), HttpStatus.CONFLICT);
+                    product.getProductName() + " already exist."), HttpStatus.CONFLICT);
         }
         productService.saveProduct(product);
 
@@ -79,12 +79,12 @@ public class ProductController {
     // >>>>>>>>>>>>>>>>>>>>>> Update a Product   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateUser(@RequestParam("id") long id,@RequestParam("code") String code,
-                                        @RequestParam("name") String name,@RequestParam("itemCode") String itemCode,
+    public ResponseEntity<?> updateUser(@RequestParam("id") long id,
+                                        @RequestParam("productName") String productName,@RequestParam("itemCode") String itemCode,
                                         @RequestParam("ownItemCode") String ownItemCode,@RequestParam("orderItemQty") long orderItemQty,
                                         @RequestParam("productCode") String productCode) {
 
-        Product product = new Product(id, code, itemCode, ownItemCode, name, orderItemQty, productCode);
+        Product product = new Product(id, itemCode, ownItemCode, productName, orderItemQty, productCode);
         log.info("Updating User with id {}", id);
 
         Product currentProduct = productService.findById(id);
@@ -97,8 +97,7 @@ public class ProductController {
 
         currentProduct.setId(product.getId());
         currentProduct.setItemCode(product.getItemCode());
-        currentProduct.setName(product.getName());
-        currentProduct.setCode(product.getCode());
+        currentProduct.setProductName((product.getProductName()));
         currentProduct.setOwnItemCode(product.getOwnItemCode());
         currentProduct.setOrderItemQty(product.getOrderItemQty());
         currentProduct.setProductCode(product.getProductCode());

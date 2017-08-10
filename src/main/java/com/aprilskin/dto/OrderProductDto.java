@@ -13,10 +13,9 @@ public class OrderProductDto {
     private String shipMobile;
     private String shipMessage;
 
-    private String code;
     private String itemCode;
     private String ownItemCode;
-    private String name;
+    private String productName;
     private long orderItemQty;
     private String productCode;
 

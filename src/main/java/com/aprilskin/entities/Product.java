@@ -19,10 +19,9 @@ public class Product {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String code;
     private String itemCode;
     private String ownItemCode;
-    private String name;
+    private String productName;
     private long orderItemQty;
     private String productCode;
 
@@ -31,12 +30,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(long id, String code, String itemCode, String ownItemCode, String name, long orderItemQty, String productCode) {
+    public Product(long id, String itemCode, String ownItemCode, String productName, long orderItemQty, String productCode) {
         this.id = id;
-        this.code = code;
         this.itemCode = itemCode;
         this.ownItemCode = ownItemCode;
-        this.name = name;
+        this.productName = productName;
         this.orderItemQty = orderItemQty;
         this.productCode = productCode;
     }
@@ -47,14 +45,6 @@ public class Product {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public String getItemCode() {
@@ -73,14 +63,6 @@ public class Product {
         this.ownItemCode = ownItemCode;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public long getOrderItemQty() {
         return orderItemQty;
     }
@@ -95,5 +77,13 @@ public class Product {
 
     public void setProductCode(String productCode) {
         this.productCode = productCode;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

@@ -49,18 +49,33 @@ public class OrderController {
         String endDateTime2 = dateTime2.format(formatter2);
 
 
-        /*List<OrderProductDto> orderProductDtos = new ArrayList<>();
+        List<OrderProductDto> orderProductDtos = new ArrayList<>();
         orders.forEach((order) -> {
-            OrderProductDto orderProductDto = new OrderProductDto();
-            orderProductDto.setNo(order.getNo());
-        });*/
+            order.getOrderProducts().forEach(orderProduct -> {
+                OrderProductDto orderProductDto = new OrderProductDto();
+                orderProductDto.setNo(order.getNo());
+                orderProductDto.setShipName(order.getShipName());
+                orderProductDto.setShipAddress(order.getShipAddress());
+                orderProductDto.setShipMobile(order.getShipMobile());
+                orderProductDto.setShipMessage(order.getShipMessage());
+
+
+
+                orderProductDto.setItemCode(orderProduct.getItemCode());
+                orderProductDto.setProductName(orderProduct.getProductName());
+                //orderProductDto.setOwnItemCode(orderProduct.getOwnItemCode());
+                orderProductDto.setOrderItemQty(orderProduct.getOrderItemQty());
+                orderProductDto.setProductCode(orderProduct.getProductCode());
+
+            });
+        });
 
 
         OrderDto orderDto = new OrderDto();
         orderDto.setStartDatetime(startDateTime2);
         orderDto.setEndDatetime(endDateTime2);
         orderDto.setOrderList(orders);
-        //orderDto.setOrderProductDtoList(orderProductDtos);
+        orderDto.setOrderProductDtoList(orderProductDtos);
 
 
         return new ResponseEntity<OrderDto>(orderDto, HttpStatus.OK);
