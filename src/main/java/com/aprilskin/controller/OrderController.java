@@ -98,9 +98,7 @@ public class OrderController {
         OrderDto orderDto = new OrderDto();
         orderDto.setStartDatetime(startDateTime2);
         orderDto.setEndDatetime(endDateTime2);
-        orderDto.setOrderList(orders);
         orderDto.setOrderProductDtoList(orderProductDtoList);
-
 
         return new ResponseEntity<OrderDto>(orderDto, HttpStatus.OK);
 

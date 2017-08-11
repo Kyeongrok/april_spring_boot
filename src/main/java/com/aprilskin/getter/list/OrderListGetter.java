@@ -50,9 +50,6 @@ public class OrderListGetter {
             order.setOrderDatetime(dateTime);
 
 
-
-
-
             List<OrderProduct> orderProductList = new ArrayList<>();
             for(JsonNode product : orderProducts){
 
@@ -62,8 +59,6 @@ public class OrderListGetter {
                 orderProduct.setOrderItemQty(product.get("order_item_qty").asLong());
                 orderProduct.setItemCode(product.get("item_code").asText());
                 orderProduct.setProductName(product.get("product_name").asText());
-                //orderProduct.setOwnItemCode(product.get("own_item_code").asText());
-
 
                 order.setProductCode(product.get("product_code").asText());
                 order.setOrderItemQty(product.get("order_item_qty").asLong());
