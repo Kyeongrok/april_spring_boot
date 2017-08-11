@@ -40,6 +40,8 @@ public class ProductServiceImpl implements ProductService{
         productRepository.deleteAll();
     }
 
+    public List<Product> findByProductCodeAndItemCode(String productCode, String itemCode) { return productRepository.findByProductCodeAndItemCode(productCode, itemCode);}
+
     public List<Product> findAllProducts(){
         return productRepository.findAll();
     }

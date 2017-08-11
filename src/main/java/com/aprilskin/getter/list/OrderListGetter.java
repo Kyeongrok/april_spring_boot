@@ -2,6 +2,7 @@ package com.aprilskin.getter.list;
 
 import com.aprilskin.entities.Order;
 import com.aprilskin.entities.OrderProduct;
+import com.aprilskin.entities.Product;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -54,12 +55,14 @@ public class OrderListGetter {
 
             List<OrderProduct> orderProductList = new ArrayList<>();
             for(JsonNode product : orderProducts){
+
                 OrderProduct orderProduct = new OrderProduct();
                 orderProduct.setOrder(order);
                 orderProduct.setProductCode(product.get("product_code").asText());
                 orderProduct.setOrderItemQty(product.get("order_item_qty").asLong());
                 orderProduct.setItemCode(product.get("item_code").asText());
                 orderProduct.setProductName(product.get("product_name").asText());
+                //orderProduct.setOwnItemCode(product.get("own_item_code").asText());
 
 
                 order.setProductCode(product.get("product_code").asText());

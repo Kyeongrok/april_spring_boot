@@ -20,6 +20,10 @@ public interface ProductService {
 
     List<Product> findAllProducts();
 
+    List<Product> findByProductCodeAndItemCode(String productCode, String itemCode);
+
     boolean isProductExist(Product product);
+
+
 
 }
