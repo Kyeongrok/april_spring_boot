@@ -7,6 +7,7 @@ import com.aprilskin.entities.Order;
 import com.aprilskin.entities.OrderProduct;
 import com.aprilskin.entities.Product;
 import com.aprilskin.repositories.OrderRepository;
+import com.aprilskin.repositories.ProductRepository;
 import com.aprilskin.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class OrderController {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
 
     @RequestMapping(value= "/list", method = RequestMethod.GET)
     public ResponseEntity getListAllByTime(@RequestParam("startDateTime") String startDateTime,
@@ -52,22 +56,42 @@ public class OrderController {
         List<OrderProductDto> orderProductDtoList = new ArrayList<>();
         orders.forEach((order) -> {
             order.getOrderProducts().forEach(orderProduct -> {
-                OrderProductDto orderProductDto = new OrderProductDto();
-                orderProductDto.setNo(order.getNo());
-                orderProductDto.setShipName(order.getShipName());
-                orderProductDto.setShipAddress(order.getShipAddress());
-                orderProductDto.setShipMobile(order.getShipMobile());
-                orderProductDto.setShipMessage(order.getShipMessage());
 
 
+                List<Product> products = productRepository.findByProductCodeAndItemCode(orderProduct.getProductCode(), orderProduct.getItemCode());
+                if(products != null){
+                    products.forEach(product -> {
+                        OrderProductDto orderProductDto = new OrderProductDto();
+                        orderProductDto.setNo(order.getNo());
+                        orderProductDto.setShipName(order.getShipName());
+                        orderProductDto.setShipAddress(order.getShipAddress());
+                        orderProductDto.setShipMobile(order.getShipMobile());
+                        orderProductDto.setShipMessage(order.getShipMessage());
 
-                orderProductDto.setItemCode(orderProduct.getItemCode());
-                orderProductDto.setProductName(orderProduct.getProductName());
-                //orderProductDto.setOwnItemCode(orderProduct.getOwnItemCode());
-                orderProductDto.setOrderItemQty(orderProduct.getOrderItemQty());
-                orderProductDto.setProductCode(orderProduct.getProductCode());
+                        orderProductDto.setItemCode(orderProduct.getItemCode());
+                        orderProductDto.setProductName(orderProduct.getProductName());
+                        //orderProductDto.setOwnItemCode(orderProduct.getOwnItemCode());
+                        orderProductDto.setOrderItemQty(orderProduct.getOrderItemQty());
+                        orderProductDto.setProductCode(orderProduct.getProductCode());
+                        orderProductDto.setOwnItemCode(product.getOwnItemCode());
+                        orderProductDtoList.add(orderProductDto);
+                    });
+                }else{
+                    OrderProductDto orderProductDto = new OrderProductDto();
+                    orderProductDto.setNo(order.getNo());
+                    orderProductDto.setShipName(order.getShipName());
+                    orderProductDto.setShipAddress(order.getShipAddress());
+                    orderProductDto.setShipMobile(order.getShipMobile());
+                    orderProductDto.setShipMessage(order.getShipMessage());
 
-                orderProductDtoList.add(orderProductDto);
+                    orderProductDto.setItemCode(orderProduct.getItemCode());
+                    orderProductDto.setProductName(orderProduct.getProductName());
+                    //orderProductDto.setOwnItemCode(orderProduct.getOwnItemCode());
+                    orderProductDto.setOrderItemQty(orderProduct.getOrderItemQty());
+                    orderProductDto.setProductCode(orderProduct.getProductCode());
+                    orderProductDtoList.add(orderProductDto);
+                }
+
             });
         });
 
