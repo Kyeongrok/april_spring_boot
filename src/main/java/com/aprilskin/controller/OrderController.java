@@ -49,7 +49,7 @@ public class OrderController {
         String endDateTime2 = dateTime2.format(formatter2);
 
 
-        List<OrderProductDto> orderProductDtos = new ArrayList<>();
+        List<OrderProductDto> orderProductDtoList = new ArrayList<>();
         orders.forEach((order) -> {
             order.getOrderProducts().forEach(orderProduct -> {
                 OrderProductDto orderProductDto = new OrderProductDto();
@@ -67,6 +67,7 @@ public class OrderController {
                 orderProductDto.setOrderItemQty(orderProduct.getOrderItemQty());
                 orderProductDto.setProductCode(orderProduct.getProductCode());
 
+                orderProductDtoList.add(orderProductDto);
             });
         });
 
@@ -75,7 +76,7 @@ public class OrderController {
         orderDto.setStartDatetime(startDateTime2);
         orderDto.setEndDatetime(endDateTime2);
         orderDto.setOrderList(orders);
-        orderDto.setOrderProductDtoList(orderProductDtos);
+        orderDto.setOrderProductDtoList(orderProductDtoList);
 
 
         return new ResponseEntity<OrderDto>(orderDto, HttpStatus.OK);
