@@ -65,6 +65,7 @@ public class OrderController {
                         orderProductDto.setShipAddress(order.getShipAddress());
                         orderProductDto.setShipMobile(order.getShipMobile());
                         orderProductDto.setShipMessage(order.getShipMessage());
+                        orderProductDto.setOrderDatetime(order.getOrderDatetime());
 
                         orderProductDto.setItemCode(orderProduct.getItemCode());
                         orderProductDto.setProductName(orderProduct.getProductName());

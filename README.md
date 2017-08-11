@@ -33,6 +33,12 @@ sh init_and_deploy.sh
 /var/wwww/april_spring_boot
 sh gradlew build
 
+./build/libs/
+java -jar apr-02.jar
+-Dspring.profiles.active = prd
+java -jar -Dspring.profiles.active = prd apr-02.jar
+
+
 ### cafe24 API
 ID : onesper
 PW :
