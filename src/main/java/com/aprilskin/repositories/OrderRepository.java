@@ -14,5 +14,5 @@ import java.util.List;
 
 @Repository("orderRepository")
 public interface OrderRepository extends JpaRepository<Order, Long> {
-            List<Order> findByOrderDatetimeBetween(LocalDateTime startDateTime, LocalDateTime endDateTime);
+    List<Order> findByOrderDatetimeBetween(LocalDateTime startDateTime, LocalDateTime endDateTime);
 }
