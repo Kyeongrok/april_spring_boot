@@ -1,20 +1,16 @@
----
 spring:
+  main:
+    banner-mode: "off"
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    password: password
-    url: "jdbc:mysql://localhost:3306/aprilskindb?zeroDateTimeBehavior=convertToNull"
+    driverClassName: org.mariadb.jdbc.Driver
+    url: "jdbc:mariadb://localhost:3306/aprilskindb"
     username: root
+    password: password
   jpa:
     database: mysql
     generate-ddl: false
     hibernate:
-      ddl-auto: validate
-    show-sql: false
+      ddl-auto: none
+    show-sql: true
 
-logging:
-  file: log/sports.log
-  level:
-    com.sports: DEBUG
-    jdbc.sqltiming: INFO
-    org.springframework.web: INFO
+

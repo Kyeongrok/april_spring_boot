@@ -56,8 +56,6 @@ public class OrderController {
         List<OrderProductDto> orderProductDtoList = new ArrayList<>();
         orders.forEach((order) -> {
             order.getOrderProducts().forEach(orderProduct -> {
-
-
                 List<Product> products = productRepository.findByProductCodeAndItemCode(orderProduct.getProductCode(), orderProduct.getItemCode());
                 if(products != null){
                     products.forEach(product -> {
