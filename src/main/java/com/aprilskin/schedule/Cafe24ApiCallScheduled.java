@@ -24,8 +24,6 @@ public class Cafe24ApiCallScheduled {
     @Autowired
     private OrderRepository orderRepository;
 
-
-
     @Autowired
     private OrderService orderService;
 
@@ -39,7 +37,6 @@ public class Cafe24ApiCallScheduled {
         LocalDateTime dateTime = LocalDateTime.now();
         String startDatetime = dateTime.minusMinutes(5).format(formatter);
         String endDatetime = dateTime.format(formatter);
-
 
 
         String string = new UrlStringGetter().getString("https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=aprilskinkor&mall_id=onesper&start_datetime="+startDatetime+"&end_datetime="+endDatetime+"&limit=2000&data_type=json&auth_code=995ff59dd187520a69b3a89cc2e71e28");

@@ -25,11 +25,11 @@ repositories {
 
 jar {
 	baseName = 'aprilskin_api'
-	version = '00.00.1'
+	version = '00.00.02'
 }
 
 bootRepackage {
-	mainClass = 'com.aprilskin.AprilSpringbootApplication'
+	mainClass = 'com.aprilskin.AprilSpringBootApplication'
 	executable = true
 }
 
