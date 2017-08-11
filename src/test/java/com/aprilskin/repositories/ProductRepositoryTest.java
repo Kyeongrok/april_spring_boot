@@ -25,21 +25,19 @@ public class ProductRepositoryTest {
     @Test
     public void save() throws Exception {
         Product product = new Product();
-        //product.setId(1);
-        product.setProductName("매직스톤");
+        product.setProductName("화장품");
         product.setOrderItemQty(5);
-        product.setProductCode("P0000A");
-        product.setItemCode("000M");
+        product.setProductCode("P0000C");
+        product.setItemCode("000b");
         product.setOwnItemCode("abc");
 
         productService.saveProduct(product);
 
         Product productSec = new Product();
-        //productSec.setId(2);
-        productSec.setProductName("매직스톤2");
+        productSec.setProductName("화장품2");
         productSec.setOrderItemQty(5);
-        productSec.setProductCode("P0000B");
-        productSec.setItemCode("000M");
+        productSec.setProductCode("P0000D");
+        productSec.setItemCode("000k");
         productSec.setOwnItemCode("abc");
 
         productService.saveProduct(productSec);

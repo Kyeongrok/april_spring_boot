@@ -56,6 +56,7 @@ public class ProductController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResponseEntity getListAll() throws Exception {
         List<Product> products = productService.findAllProducts();
+
         if (products.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
