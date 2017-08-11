@@ -15,25 +15,15 @@ import java.util.List;
 @Data
 @Table(name="product")
 public class Product {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name="item_code")
     private String itemCode;
-
-    @Column(name="own_item_code")
     private String ownItemCode;
-
-    @Column(name="product_name")
     private String productName;
-
-    @Column(name="order_item_qty")
     private long orderItemQty;
-
-    @Column(name="product_code")
     private String productCode;
-
+    private double price;
 
 
 
