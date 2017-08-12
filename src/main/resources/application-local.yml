@@ -20,7 +20,7 @@ spring:
 logging :
   file : logs/local_app.log
   pattern:
-    file :  "%msg%n"
+    file :  "%d{yyyy-MM-dd HH:mm:ss}%msg%n"
   level:
     org.springframework.web: INFO
     guru.springframework.controllers: INFO
