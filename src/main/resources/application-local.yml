@@ -14,3 +14,14 @@ spring:
     show-sql: true
 
 
+---
+spring:
+  profiles: local
+logging :
+  file : logs/local_app.log
+  pattern:
+    file :  "%msg%n"
+  level:
+    org.springframework.web: INFO
+    guru.springframework.controllers: INFO
+    org.hibernate : INFO
