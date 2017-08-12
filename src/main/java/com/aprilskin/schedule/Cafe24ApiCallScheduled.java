@@ -31,7 +31,7 @@ public class Cafe24ApiCallScheduled {
 
     //라이브 5분마다
     @Scheduled(fixedRate = 1000 * 60 * 5)
-    public void livescore(){
+    public void cafe24OrderListCall(){
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd+HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.now();
