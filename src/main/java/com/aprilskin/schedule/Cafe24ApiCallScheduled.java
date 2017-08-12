@@ -38,11 +38,16 @@ public class Cafe24ApiCallScheduled {
         String startDatetime = dateTime.minusMinutes(5).format(formatter);
         String endDatetime = dateTime.format(formatter);
 
+        log.info(startDatetime + ", " + endDatetime);
 
         String string = new UrlStringGetter().getString("https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=aprilskinkor&mall_id=onesper&start_datetime="+startDatetime+"&end_datetime="+endDatetime+"&limit=2000&data_type=json&auth_code=995ff59dd187520a69b3a89cc2e71e28");
-        List<Order> orderList = orderListGetter.getOrderList(string);
 
-        orderRepository.save(orderList);
+        try {
+            List<Order> orderList = orderListGetter.getOrderList(string);
+            orderRepository.save(orderList);
+        } catch (Exception e) {
+            log.error("cafe24 processing error:", e);
+        }
 
     }
 
