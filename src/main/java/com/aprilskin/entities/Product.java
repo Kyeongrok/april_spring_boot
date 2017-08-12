@@ -30,13 +30,14 @@ public class Product {
     public Product() {
     }
 
-    public Product(long id, String itemCode, String ownItemCode, String productName, long orderItemQty, String productCode) {
+    public Product(long id, String itemCode, String ownItemCode, String productName, long orderItemQty, String productCode, double price) {
         this.id = id;
         this.itemCode = itemCode;
         this.ownItemCode = ownItemCode;
         this.productName = productName;
         this.orderItemQty = orderItemQty;
         this.productCode = productCode;
+        this.price = price;
     }
 
     public long getId() {
@@ -85,5 +86,13 @@ public class Product {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

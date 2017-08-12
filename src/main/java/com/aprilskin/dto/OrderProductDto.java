@@ -17,13 +17,14 @@ public class OrderProductDto {
     private String shipMobile;
     private String shipMessage;
 
-    @Convert(converter = LocalDateTimeAttributeConverter.class)
-    private LocalDateTime orderDatetime;
+    //@Convert(converter = LocalDateTimeAttributeConverter.class)
+    private String orderDatetime;
 
     private String itemCode;
     private String ownItemCode;
     private String productName;
     private long orderItemQty;
     private String productCode;
+    private double price;
 
 }

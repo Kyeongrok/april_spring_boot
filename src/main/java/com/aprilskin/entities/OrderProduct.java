@@ -30,5 +30,6 @@ public class OrderProduct {
     private String productName;
     private long orderItemQty;
     private String productCode;
+    private double price;
 
 }

@@ -59,6 +59,7 @@ public class OrderListGetter {
                 orderProduct.setOrderItemQty(product.get("order_item_qty").asLong());
                 orderProduct.setItemCode(product.get("item_code").asText());
                 orderProduct.setProductName(product.get("product_name").asText());
+                orderProduct.setPrice(product.get("price").asDouble());
 
                 order.setProductCode(product.get("product_code").asText());
                 order.setOrderItemQty(product.get("order_item_qty").asLong());

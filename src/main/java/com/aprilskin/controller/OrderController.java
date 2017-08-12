@@ -65,13 +65,17 @@ public class OrderController {
                         orderProductDto.setShipAddress(order.getShipAddress());
                         orderProductDto.setShipMobile(order.getShipMobile());
                         orderProductDto.setShipMessage(order.getShipMessage());
-                        orderProductDto.setOrderDatetime(order.getOrderDatetime());
+
+                        String orderDateTime = order.getOrderDatetime().format(formatter2);
+                        orderProductDto.setOrderDatetime(orderDateTime);
 
                         orderProductDto.setItemCode(orderProduct.getItemCode());
                         orderProductDto.setProductName(orderProduct.getProductName());
                         //orderProductDto.setOwnItemCode(orderProduct.getOwnItemCode());
                         orderProductDto.setOrderItemQty(orderProduct.getOrderItemQty());
                         orderProductDto.setProductCode(orderProduct.getProductCode());
+                        orderProductDto.setPrice(orderProduct.getPrice());
+
                         orderProductDto.setOwnItemCode(product.getOwnItemCode());
                         orderProductDtoList.add(orderProductDto);
                     });

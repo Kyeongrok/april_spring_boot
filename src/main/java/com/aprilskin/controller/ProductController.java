@@ -35,8 +35,8 @@ public class ProductController {
     public ResponseEntity<?> createProduct(@RequestParam("id") long id,
                                            @RequestParam("productName") String productName,@RequestParam("itemCode") String itemCode,
                                            @RequestParam("ownItemCode") String ownItemCode,@RequestParam("orderItemQty") long orderItemQty,
-                                           @RequestParam("productCode") String productCode) {
-        Product product = new Product(id, itemCode, ownItemCode, productName, orderItemQty, productCode);
+                                           @RequestParam("productCode") String productCode, @RequestParam("price") double price) {
+        Product product = new Product(id, itemCode, ownItemCode, productName, orderItemQty, productCode, price);
         log.info("Creating Product : {}", product);
         if (productService.isProductExist(product)) {
             log.error("Unable to create. A Product name {} already exist", product.getProductName());
@@ -83,9 +83,9 @@ public class ProductController {
     public ResponseEntity<?> updateUser(@RequestParam("id") long id,
                                         @RequestParam("productName") String productName,@RequestParam("itemCode") String itemCode,
                                         @RequestParam("ownItemCode") String ownItemCode,@RequestParam("orderItemQty") long orderItemQty,
-                                        @RequestParam("productCode") String productCode) {
+                                        @RequestParam("productCode") String productCode, @RequestParam("price") double price) {
 
-        Product product = new Product(id, itemCode, ownItemCode, productName, orderItemQty, productCode);
+        Product product = new Product(id, itemCode, ownItemCode, productName, orderItemQty, productCode, price);
         log.info("Updating User with id {}", id);
 
         Product currentProduct = productService.findById(id);
@@ -102,6 +102,7 @@ public class ProductController {
         currentProduct.setOwnItemCode(product.getOwnItemCode());
         currentProduct.setOrderItemQty(product.getOrderItemQty());
         currentProduct.setProductCode(product.getProductCode());
+        currentProduct.setPrice(product.getPrice());
 
         productService.updateProduct(currentProduct);
         return new ResponseEntity<Product>(currentProduct, HttpStatus.OK);
