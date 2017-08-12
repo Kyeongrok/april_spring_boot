@@ -74,3 +74,15 @@ nginx root : /usr/share/nginx/html
 sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 reboot
 ```
+
+
+### ubuntu AWS ES2 배포시 로그파일 남기는 법\
+1. nohup - 사용자가 로그아웃해도 백그라운드로 실행 시키기 ```sh $nohup java -jar & ``` 
+프로세스 종료 1. 찾기 ```sh $ps -ef | grep ``` 2. 종료 ```sh $kill -9 ``` 
+로그 * `nohup`로 실행된 쉘 스크립트는 자동으로`nohup.out`이라는 로그파일을 실행한 위치에 생성시킨다. 
+* 로그 파일 생성막기 ```sh # 1(stdout), 2(stderr). stdout을 /dev/null로 stderr를 stdout으로 리다이렉션시키므로 파일 생성이 안된다. 
+$nohup `java -jar ` 1 > /dev/null 2 > &1 & ``` 
+
+2. AWS에서 제공하는 cloudwatch 사용하기
+
+3. 
