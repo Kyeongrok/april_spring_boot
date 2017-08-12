@@ -14,14 +14,13 @@ spring:
     show-sql: true
 
 ---
-
 spring:
   profiles: prd
 logging :
   file : logs/prd_app.log
   pattern:
-    file :  "%d %-5level [%thread] %logger{0} : %msg%n"
+    file :  "%msg%n"
   level:
-    org.springframework.web: WARN
-    guru.springframework.controllers: WARN
-    org.hibernate : WARN
+    org.springframework.web: INFO
+    april_spring_boot.springframework.controllers: INFO
+    org.hibernate : INFO

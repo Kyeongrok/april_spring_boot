@@ -38,6 +38,10 @@ java -jar apr-02.jar
 -Dspring.profiles.active = prd
 java -jar -Dspring.profiles.active = prd apr-02.jar
 
+//// local spring boot와 최신 동기화 
+git pull
+sh gradlew assemble
+ sh april_spring_boot.sh restart
 
 ### cafe24 API
 ID : onesper
