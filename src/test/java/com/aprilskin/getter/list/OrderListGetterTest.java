@@ -15,7 +15,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ActiveProfiles("local")
+@ActiveProfiles("test")
 public class OrderListGetterTest {
     @Qualifier("orderRepository")
     @Autowired
