@@ -13,6 +13,7 @@ public class Cafe24ApiCallScheduled {
     @Test
     public void name() throws Exception {
         LocalDateTime dateTime = LocalDateTime.now();
-        log.info("date time : "+dateTime.toString());
+        LocalDateTime after10Hour = dateTime.plusHours(10l);
+        log.info("date time : "+after10Hour.toString());
     }
 }
