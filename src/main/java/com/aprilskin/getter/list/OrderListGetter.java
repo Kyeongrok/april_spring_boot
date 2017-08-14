@@ -5,6 +5,7 @@ import com.aprilskin.entities.OrderProduct;
 import com.aprilskin.entities.Product;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-
+@Slf4j
 public class OrderListGetter {
     public List<Order> getOrderList(String string){
         List<Order> orderList = new ArrayList<>();
@@ -33,6 +34,8 @@ public class OrderListGetter {
         }
 
         JsonNode results = jsonNode.get("response").get("result");
+
+        log.info("number of results:" +results.size());
 
         results.forEach((result)->{
             JsonNode orderProducts = result.get("product");
