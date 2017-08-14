@@ -40,7 +40,7 @@ public class Cafe24ApiCallScheduled {
         log.info("after 10 hour:"+after10Hour);
 
         String startDatetime = after10Hour.minusMinutes(5).format(formatter);
-        String endDatetime = dateTime.format(formatter);
+        String endDatetime = after10Hour.format(formatter);
 
         log.info(startDatetime + ", " + endDatetime);
 
