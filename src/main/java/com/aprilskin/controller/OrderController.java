@@ -57,7 +57,7 @@ public class OrderController {
         orders.forEach((order) -> {
             order.getOrderProducts().forEach(orderProduct -> {
                 List<Product> products = productRepository.findByProductCodeAndItemCode(orderProduct.getProductCode(), orderProduct.getItemCode());
-                if(products != null){
+                if(products != null && products.size() > 0){
                     products.forEach(product -> {
                         OrderProductDto orderProductDto = new OrderProductDto();
                         orderProductDto.setNo(order.getNo());
