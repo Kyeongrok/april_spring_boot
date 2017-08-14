@@ -39,7 +39,8 @@ public class Cafe24ApiCallScheduled {
 
         log.info("after 10 hour:"+after10Hour);
 
-        String startDatetime = after10Hour.minusMinutes(5).format(formatter);
+        //5분마다 6분 주기로 가지고 온다.
+        String startDatetime = after10Hour.minusMinutes(6).format(formatter);
         String endDatetime = after10Hour.format(formatter);
 
         log.info(startDatetime + ", " + endDatetime);
@@ -48,6 +49,7 @@ public class Cafe24ApiCallScheduled {
 
         try {
             List<Order> orderList = orderListGetter.getOrderList(string);
+            log.info("extracted orderList number:" + orderList.size());
             orderRepository.save(orderList);
         } catch (Exception e) {
             log.error("cafe24 processing error:", e);
