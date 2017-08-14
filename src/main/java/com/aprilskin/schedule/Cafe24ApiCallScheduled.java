@@ -35,13 +35,14 @@ public class Cafe24ApiCallScheduled {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd+HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.now();
-        LocalDateTime after10Hour = dateTime.plusHours(9l);
 
-        log.info("after 10 hour:"+after10Hour);
+
+        log.info("datetime : "+dateTime);
+
 
         //5분마다 6분 주기로 가지고 온다.
-        String startDatetime = after10Hour.minusMinutes(6).format(formatter);
-        String endDatetime = after10Hour.format(formatter);
+        String startDatetime = dateTime.minusMinutes(6).format(formatter);
+        String endDatetime = dateTime.format(formatter);
 
         log.info(startDatetime + ", " + endDatetime);
 
