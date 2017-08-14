@@ -90,3 +90,11 @@ $nohup `java -jar ` 1 > /dev/null 2 > &1 & ```
 2. AWS에서 제공하는 cloudwatch 사용하기
 
 3. 
+
+###
+order.amount_paid로 order에 저장한다
+이걸로 dash bord의 매출을 구한다.
+
+오늘날짜, 일정 시간에 amount_paid의 합계를 dash board에 보여줌
+
+
