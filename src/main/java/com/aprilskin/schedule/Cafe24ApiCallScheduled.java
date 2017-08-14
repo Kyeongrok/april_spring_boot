@@ -36,6 +36,9 @@ public class Cafe24ApiCallScheduled {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd+HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.now();
         LocalDateTime after10Hour = dateTime.plusHours(10l);
+
+        log.info("after 10 hour:"+after10Hour);
+
         String startDatetime = after10Hour.minusMinutes(5).format(formatter);
         String endDatetime = dateTime.format(formatter);
 
