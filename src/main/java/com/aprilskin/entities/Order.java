@@ -30,9 +30,8 @@ public class Order {
     private String shipMobile;
     private String shipMessage;
 
-    private String productCode;
     private long orderItemQty;
-    private String itemCode;
+    private double amountPaid;
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
@@ -48,15 +47,14 @@ public class Order {
     public Order() {
     }
 
-    public Order(String no, String shipName, String shipAddress, String shipMobile, String shipMessage, String productCode, long orderItemQty, String itemCode, List<OrderProduct> orderProducts, LocalDateTime orderDatetime) {
+    public Order(String no, String shipName, String shipAddress, String shipMobile, String shipMessage, long orderItemQty, double amountPaid, List<OrderProduct> orderProducts, LocalDateTime orderDatetime) {
         this.no = no;
         this.shipName = shipName;
         this.shipAddress = shipAddress;
         this.shipMobile = shipMobile;
         this.shipMessage = shipMessage;
-        this.productCode = productCode;
         this.orderItemQty = orderItemQty;
-        this.itemCode = itemCode;
+        this.amountPaid = amountPaid;
         this.orderProducts = orderProducts;
         this.orderDatetime = orderDatetime;
     }
