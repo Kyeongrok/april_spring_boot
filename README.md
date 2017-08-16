@@ -98,3 +98,6 @@ order.amount_paid로 order에 저장한다
 오늘날짜, 일정 시간에 amount_paid의 합계를 dash board에 보여줌
 
 
+###
+update order1 
+set amount_paid = '0' where id <= 840
