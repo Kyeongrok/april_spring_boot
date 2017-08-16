@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping({"/medicube/v1/order"})
 @CrossOrigin(origins = "*")
 @Slf4j
-public class MediCubeController {
+public class MedicubeController {
     @Autowired
     private OrderService orderService;
 
