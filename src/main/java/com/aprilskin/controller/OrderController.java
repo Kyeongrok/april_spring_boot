@@ -108,6 +108,23 @@ public class OrderController {
 
     }
 
+    @RequestMapping(value= "/origin", method = RequestMethod.GET)
+    public ResponseEntity getOriginList(@RequestParam("startDateTime") String startDateTime,
+                                           @RequestParam("endDateTime") String endDateTime) throws Exception {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.parse(startDateTime, formatter);
+        LocalDateTime dateTime2 = LocalDateTime.parse(endDateTime, formatter);
+
+
+        List<Order> orders = orderRepository.findByOrderDatetimeBetween(dateTime, dateTime2);
+
+        return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
+
+    }
+
+
+
     @RequestMapping(value = "/list/all", method = RequestMethod.GET)
     public ResponseEntity getListAll() throws Exception {
         List<Order> orders = orderService.findAllOrder();
