@@ -16,6 +16,7 @@ public class OrderProductDto {
     private String shipAddress;
     private String shipMobile;
     private String shipMessage;
+    private double amountPaid;
 
     //@Convert(converter = LocalDateTimeAttributeConverter.class)
     private String orderDatetime;
@@ -26,5 +27,6 @@ public class OrderProductDto {
     private long orderItemQty;
     private String productCode;
     private double price;
+
 
 }

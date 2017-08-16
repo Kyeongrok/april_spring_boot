@@ -24,8 +24,8 @@ public class OrderRepositoryTest {
 
     @Test
     public void findByOrderDatetimeBetween() throws Exception {
-        String StartDateTime = "2017-08-12+00:00:00";
-        String EndDateTime = "2017-08-12+22:00:00";
+        String StartDateTime = "2017-08-13+00:00:00";
+        String EndDateTime = "2017-08-13+22:00:00";
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd+HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.parse(StartDateTime, formatter);

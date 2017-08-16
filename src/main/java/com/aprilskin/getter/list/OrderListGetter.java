@@ -46,6 +46,7 @@ public class OrderListGetter {
             order.setShipName(result.get("ship_name").asText());
             order.setShipMobile(result.get("ship_mobile").asText());
             order.setShipMessage(result.get("ship_message").asText());
+            order.setAmountPaid(result.get("amount_paid").asDouble());
             String dataString = result.get("order_datetime").asText();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             LocalDateTime dateTime = LocalDateTime.parse(dataString,formatter);
@@ -64,9 +65,8 @@ public class OrderListGetter {
                 orderProduct.setProductName(product.get("product_name").asText());
                 orderProduct.setPrice(product.get("product_sale_price").asDouble());
 
-                order.setProductCode(product.get("product_code").asText());
+
                 order.setOrderItemQty(product.get("order_item_qty").asLong());
-                order.setItemCode(product.get("item_code").asText());
 
                 orderProductList.add(orderProduct);
             }

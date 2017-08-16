@@ -15,7 +15,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ActiveProfiles("test")
+@ActiveProfiles("local")
 public class OrderListGetterTest {
     @Qualifier("orderRepository")
     @Autowired
@@ -28,8 +28,8 @@ public class OrderListGetterTest {
         String string = new FileStringGetter().getString("./test_data/april_cafe24_api_result.json");
         List<Order> orderList = orderListGetter.getOrderList(string);
 
-        orderList.forEach((orderItem)->{
-            orderRepository.save(orderItem);
+        orderList.forEach((order)->{
+            orderRepository.save(order);
         });
 
         //orderRepository.save(orderList.get(0));
