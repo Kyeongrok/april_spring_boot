@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Data
 public class OrderProductDto {
     private String no;
+    private int shopType;
     private String shipName;
     private String shipAddress;
     private String shipMobile;

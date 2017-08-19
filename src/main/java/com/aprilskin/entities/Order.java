@@ -48,7 +48,8 @@ public class Order {
     public Order() {
     }
 
-    public Order(String no, String shipName, String shipAddress, String shipMobile, String shipMessage, long orderItemQty, double amountPaid, List<OrderProduct> orderProducts, LocalDateTime orderDatetime) {
+    public Order(int shopType, String no, String shipName, String shipAddress, String shipMobile, String shipMessage, long orderItemQty, double amountPaid, List<OrderProduct> orderProducts, LocalDateTime orderDatetime) {
+        this.shopType = shopType;
         this.no = no;
         this.shipName = shipName;
         this.shipAddress = shipAddress;
