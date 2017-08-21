@@ -49,6 +49,8 @@ PW :
 URL :
 https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=aprilskinkor&mall_id=onesper&data_type=json&auth_code=995ff59dd187520a69b3a89cc2e71e28
 https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=medicube&mall_id=medicube0&start_datetime="+startDatetime+"&end_datetime="+endDatetime+"&limit=2000&data_type=json&auth_code=890f405ec9b7ebccd0ec9d3aa1857254"
+ex)
+https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=medicube&mall_id=medicube0&start_datetime=2017-08-21+11:00:00&end_datetime=2017-08-21+12:00:00&limit=2000&data_type=json&auth_code=b5b4c56e7eb95ecaa87259dfaefd21b8
 
 
 ### 재시작 방법

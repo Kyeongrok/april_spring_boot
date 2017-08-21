@@ -36,17 +36,13 @@ public class Cafe24ApiCallScheduled {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd+HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.now();
 
-
         log.info("datetime : "+dateTime);
-
 
         //5분마다 6분 주기로 가지고 온다.
         String startDatetime = dateTime.minusMinutes(6).format(formatter);
         String endDatetime = dateTime.format(formatter);
 
         log.info(startDatetime + ", " + endDatetime);
-
-
 
         String string = new UrlStringGetter().getString("https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=aprilskinkor&mall_id=onesper&start_datetime="+startDatetime+"&end_datetime="+endDatetime+"&limit=2000&data_type=json&auth_code=995ff59dd187520a69b3a89cc2e71e28");
 
