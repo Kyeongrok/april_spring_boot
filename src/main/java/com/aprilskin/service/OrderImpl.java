@@ -24,7 +24,7 @@ public class OrderImpl implements OrderService {
         return orderRepository.findAll();
     }
 
-    public List<Order> findByOrderDatetimeBetweenAndShopType(LocalDateTime startDateTime, LocalDateTime endDateTime, int shoptype) {
+    public List<Order> findByOrderDatetimeBetweenAndShopType(LocalDateTime startDateTime, LocalDateTime endDateTime, int shopType) {
         return orderRepository.findByOrderDatetimeBetweenAndShopType(startDateTime, endDateTime, shopType);
     }
 
