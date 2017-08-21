@@ -13,7 +13,6 @@ http://ec2-13-59-102-169.us-east-2.compute.amazonaws.com/index.html
 
 끝 날짜 ex)2017-07-16 24:00:00
 
-### Mark Down 작성하는 법 _ 매뉴얼 찾기
 
 ### 배포하는 방법
 ```
@@ -49,6 +48,7 @@ PW :
 
 URL :
 https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=aprilskinkor&mall_id=onesper&data_type=json&auth_code=995ff59dd187520a69b3a89cc2e71e28
+https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=medicube&mall_id=medicube0&start_datetime="+startDatetime+"&end_datetime="+endDatetime+"&limit=2000&data_type=json&auth_code=890f405ec9b7ebccd0ec9d3aa1857254"
 
 
 ### 재시작 방법
