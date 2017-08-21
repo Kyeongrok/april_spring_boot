@@ -47,7 +47,7 @@ public class Cafe24ApiCallScheduled {
         String string = new UrlStringGetter().getString("https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=aprilskinkor&mall_id=onesper&start_datetime="+startDatetime+"&end_datetime="+endDatetime+"&limit=2000&data_type=json&auth_code=995ff59dd187520a69b3a89cc2e71e28");
 
         try {
-            List<Order> orderList = orderListGetter.getOrderList(string);
+            List<Order> orderList = orderListGetter.getOrderList(string, 1);
             log.info("extracted orderList number:" + orderList.size());
             orderRepository.save(orderList);
         } catch (Exception e) {
@@ -55,5 +55,7 @@ public class Cafe24ApiCallScheduled {
         }
 
     }
+
+
 
 }

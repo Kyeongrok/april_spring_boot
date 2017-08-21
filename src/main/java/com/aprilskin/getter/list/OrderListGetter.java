@@ -19,7 +19,7 @@ import java.util.Locale;
 
 @Slf4j
 public class OrderListGetter {
-    public List<Order> getOrderList(String string){
+    public List<Order> getOrderList(String string, int shopType){
         List<Order> orderList = new ArrayList<>();
 
         JsonNode jsonNode;
@@ -42,6 +42,7 @@ public class OrderListGetter {
 
             Order order = new Order();
             order.setNo(result.get("order_no").asText());
+            order.setShopType(shopType);
             order.setShipAddress(result.get("ship_address1").asText() + " " + result.get("ship_address2").asText());
             order.setShipName(result.get("ship_name").asText());
             order.setShipMobile(result.get("ship_mobile").asText());
