@@ -65,5 +65,7 @@ dependencies {
 	compile 'org.apache.httpcomponents:httpmime:4.5'
 	compile 'org.springframework.boot:spring-boot-starter-security'
 	compile 'org.springframework.boot:spring-boot-starter-data-rest'
+	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	compile 'org.springframework.boot:spring-boot-starter-validation'
 
 }

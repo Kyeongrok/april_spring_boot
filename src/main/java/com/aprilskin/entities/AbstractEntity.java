@@ -1,6 +1,5 @@
 package com.aprilskin.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -13,13 +12,15 @@ import javax.persistence.MappedSuperclass;
 @EntityListeners(AuditingEntityListener.class)
 public class AbstractEntity {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @JsonProperty
-    private Long id;
+    private Long id; // id
 
     public Long getId() {
         return id;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -35,6 +36,4 @@ public class AbstractEntity {
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
     }
-
-
 }

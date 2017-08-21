@@ -3,54 +3,49 @@ package com.aprilskin.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.dom4j.tree.AbstractEntity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
+@Table(name= "user")
 public class User extends AbstractEntity {
 
-    @Column(nullable = false, unique = true, length = 20)
-    @JsonProperty
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String userId;
-
-    @JsonIgnore
     private String password;
+    //private Set<Role> roles;
 
-    @JsonProperty
-    private String name;
-
-    @JsonProperty
-    private String email;
-
-    public boolean matchId(Long newId){
-        if( newId == null) {
+    // 아이디 일치확인 메서드
+    public boolean matchId(Long newId) {
+        if ( newId == null ) {
             return false;
         }
-        return newId.equals(getUserId());
+        return newId.equals(getId());
     }
 
-    public boolean matchPassword(String newPassword){
-        if(newPassword == null) {
+    // 비밀번호 일치확인 매서드
+    public boolean matchPassword(String newPassword) {
+        if ( newPassword == null ) {
             return false;
         }
         return newPassword.equals(password);
     }
 
-    public void update(User updateUser){
-        this.email = updateUser.email;
-        this.name = updateUser.name;
-        this.password = updateUser.password;
+    // Update() 메서드
+    public void update(User updatedUser) {
+        this.userId = updatedUser.userId;
+        this.password = updatedUser.password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" + super.toString() +
-                "userId='" + userId + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public User() {
     }
 
+    public User(String userId, String password) {
+        this.userId = userId;
+        this.password = password;
+    }
 }
