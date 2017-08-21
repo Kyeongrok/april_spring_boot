@@ -103,3 +103,9 @@ order.amount_paid로 order에 저장한다
 ###
 update order1 
 set amount_paid = '0' where id <= 840
+
+###
+electron-react 배포시
+www/electron_react 에서 npm install 해서 npm 최신화
+init_and_deploy_front.sh 실행해서 배포
+

@@ -44,12 +44,16 @@ public class Cafe24ApiCallScheduled {
 
         log.info(startDatetime + ", " + endDatetime);
 
-        String string = new UrlStringGetter().getString("https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=aprilskinkor&mall_id=onesper&start_datetime="+startDatetime+"&end_datetime="+endDatetime+"&limit=2000&data_type=json&auth_code=995ff59dd187520a69b3a89cc2e71e28");
+        String aprilSkinString = new UrlStringGetter().getString("https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=aprilskinkor&mall_id=onesper&start_datetime="+startDatetime+"&end_datetime="+endDatetime+"&limit=2000&data_type=json&auth_code=995ff59dd187520a69b3a89cc2e71e28");
+        String mediCubeString = new UrlStringGetter().getString("https://datahub.cafe24.com/openapi/shop/order/v1/search?service_type=medicube&mall_id=medicube0&start_datetime="+startDatetime+"&end_datetime="+endDatetime+"&limit=2000&data_type=json&auth_code=b5b4c56e7eb95ecaa87259dfaefd21b8");
+
 
         try {
-            List<Order> orderList = orderListGetter.getOrderList(string, 1);
-            log.info("extracted orderList number:" + orderList.size());
-            orderRepository.save(orderList);
+            List<Order> aprilSkinOrderList = orderListGetter.getOrderList(aprilSkinString, 1);
+            List<Order> mediCubeOrderList = orderListGetter.getOrderList(mediCubeString, 2);
+            log.info("extracted orderList number:" + aprilSkinOrderList.size());
+            orderRepository.save(aprilSkinOrderList);
+            orderRepository.save(mediCubeOrderList);
         } catch (Exception e) {
             log.error("cafe24 processing error:", e);
         }

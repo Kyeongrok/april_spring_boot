@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface OrderService {
 
-    List<Order> findByOrderDatetimeBetween(LocalDateTime startDateTime, LocalDateTime endDateTime);
+    List<Order> findByOrderDatetimeBetweenAndShopType(LocalDateTime startDateTime, LocalDateTime endDateTime,
+                                                      int shopType);
 
     void saveOrder(Order order);
 
